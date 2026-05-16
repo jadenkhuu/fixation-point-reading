@@ -8,7 +8,7 @@ through text.
 
 The idea for this project was heavily inspired by some random image I saw on Twitter a few months back.
 
-<img width="1744" height="255" alt="image" src="https://github.com/user-attachments/assets/16162c1c-9635-4f63-9205-d440d4a84638" />
+<img width="1290" height="1104" alt="image" src="https://github.com/user-attachments/assets/e0dd76a2-9dd4-4c7b-baf0-7990af9c0560" />
 
 ## Usage
 
