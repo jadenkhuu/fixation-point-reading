@@ -261,6 +261,12 @@ button.ghost:disabled { opacity: 0.45; cursor: not-allowed; }
   align-items: center;
 }
 
+.corner-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .corner-btn {
   width: 34px;
   height: 34px;
@@ -285,6 +291,61 @@ button.ghost:disabled { opacity: 0.45; cursor: not-allowed; }
 }
 @media (prefers-color-scheme: dark) {
   .corner-btn:hover { background: var(--accent-soft); }
+}
+
+/* ============================ Info view =========================== */
+
+.info-body {
+  margin: 0 0 12px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.info-example {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+}
+
+.info-example-label {
+  display: block;
+  margin: 0 0 4px;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.info-example-text {
+  margin: 0 0 10px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.info-example-text:last-child { margin-bottom: 0; }
+
+.info-example-text .fr-bold {
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.info-tip {
+  margin: 0;
+  padding: 9px 11px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  background: var(--surface-alt);
+  border-radius: var(--radius-sm);
+}
+.info-tip b {
+  color: var(--ink);
+  font-weight: 600;
 }
 
 /* ============================ Settings view ====================== */

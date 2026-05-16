@@ -12,9 +12,20 @@ const DEFAULT_RATIO_FALLBACK = 0.6;
 // ---- DOM handles --------------------------------------------------------
 const viewMain     = document.getElementById('view-main');
 const viewSettings = document.getElementById('view-settings');
+const viewInfo     = document.getElementById('view-info');
 const openSettings = document.getElementById('open-settings');
 const closeSettings = document.getElementById('close-settings');
 const openInfo     = document.getElementById('open-info');
+const closeInfo    = document.getElementById('close-info');
+const openGithub   = document.getElementById('open-github');
+const openKofi     = document.getElementById('open-kofi');
+const infoExample  = document.getElementById('info-example-bionic');
+
+const INFO_EXAMPLE_TEXT =
+  "Your eyes jump between anchor points instead of scanning every letter.";
+
+const GITHUB_URL = 'https://github.com/jadenkhuu/fixation-point-reading';
+const KOFI_URL   = 'https://ko-fi.com/jadenkhuu';
 
 const bigToggle    = document.getElementById('big-toggle');
 const revertBtn    = document.getElementById('revert-all');
@@ -71,26 +82,65 @@ async function send(tabId, msg) {
 // ---- View navigation ----------------------------------------------------
 
 function showView(name) {
-  const isSettings = name === 'settings';
-  viewMain.hidden = isSettings;
-  viewSettings.hidden = !isSettings;
+  viewMain.hidden     = name !== 'main';
+  viewSettings.hidden = name !== 'settings';
+  viewInfo.hidden     = name !== 'info';
   // Move focus to the most relevant control on each view.
-  if (isSettings) intensityEl.focus({ preventScroll: true });
+  if (name === 'settings') intensityEl.focus({ preventScroll: true });
+  else if (name === 'info') {
+    renderInfoExample(parseFloat(intensityEl.value));
+    closeInfo.focus({ preventScroll: true });
+  }
   else bigToggle.focus({ preventScroll: true });
+}
+
+// Mirror of content.js's bolding rule — re-implemented here because the
+// popup is a separate document with no module boundary back to the content
+// script. Used only for the About-view example.
+function exampleBoldCount(len, ratio) {
+  if (len <= 2) return 1;
+  return Math.min(len - 1, Math.round(len * ratio));
+}
+
+function renderInfoExample(ratio) {
+  if (!infoExample) return;
+  infoExample.textContent = '';
+  const parts = INFO_EXAMPLE_TEXT.match(/(\p{L}+|[^\p{L}]+)/gu) || [];
+  for (const part of parts) {
+    if (!/^\p{L}/u.test(part)) {
+      infoExample.appendChild(document.createTextNode(part));
+      continue;
+    }
+    const n = exampleBoldCount(part.length, ratio);
+    if (n > 0) {
+      const b = document.createElement('b');
+      b.className = 'fr-bold';
+      b.textContent = part.slice(0, n);
+      infoExample.appendChild(b);
+    }
+    if (n < part.length) {
+      infoExample.appendChild(document.createTextNode(part.slice(n)));
+    }
+  }
 }
 
 openSettings.addEventListener('click', () => showView('settings'));
 closeSettings.addEventListener('click', () => showView('main'));
+openInfo.addEventListener('click', () => showView('info'));
+closeInfo.addEventListener('click', () => showView('main'));
 
-// Info button — placeholder. Intent: eventually open a Chrome Web Store
-// listing or an About page. For now it's a no-op with a transient hint.
-openInfo.addEventListener('click', () => {
-  setStatus('More info coming soon.');
-});
+// External links — popups close on click, so we use chrome.tabs.create
+// rather than letting an anchor element handle navigation.
+function openExternal(url) {
+  chrome.tabs.create({ url });
+  window.close();
+}
+openGithub.addEventListener('click', () => openExternal(GITHUB_URL));
+openKofi.addEventListener('click', () => openExternal(KOFI_URL));
 
-// Esc returns to main from settings.
+// Esc returns to main from any sub-view.
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && !viewSettings.hidden) {
+  if (e.key === 'Escape' && (!viewSettings.hidden || !viewInfo.hidden)) {
     e.preventDefault();
     showView('main');
   }

@@ -19,11 +19,13 @@
   // ---- Bolding rules -----------------------------------------------------
 
   // Lengths 1-2 always bold exactly 1 letter (no contrast possible otherwise).
-  // For length 3+ the count scales with `ratio`, capped at length-1 so at
-  // least one trailing letter remains unbolded as a fixation anchor.
+  // For length 3+ the count is `round(length * ratio)`, capped at length-1
+  // so at least one trailing letter remains unbolded as a fixation anchor.
+  // `round` (vs `ceil`) keeps 4-letter words at ~50% by default while
+  // longer words settle around the chosen ratio.
   function boldCountFor(len) {
     if (len <= 2) return 1;
-    return Math.min(len - 1, Math.ceil(len * ratio));
+    return Math.min(len - 1, Math.round(len * ratio));
   }
 
   // ---- DOM helpers -------------------------------------------------------
