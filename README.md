@@ -6,6 +6,10 @@ A Chrome extension that bolds the first letters of each word you select on
 a web page, creating visual fixation points to help guide your eyes
 through text.
 
+The idea for this project was heavily inspired by some random image I saw on Twitter a few months back.
+
+<img width="1744" height="255" alt="image" src="https://github.com/user-attachments/assets/16162c1c-9635-4f63-9205-d440d4a84638" />
+
 ## Usage
 
 1. Click the FixReading icon and flip the toggle to **On**. The badge on
