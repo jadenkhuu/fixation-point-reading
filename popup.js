@@ -7,7 +7,7 @@
 //   • per-tab state    → chrome.storage.session (managed by background.js)
 //   • default ratio    → chrome.storage.local (managed here, mirrored to bg)
 
-const DEFAULT_RATIO_FALLBACK = 0.5;
+const DEFAULT_RATIO_FALLBACK = 0.6;
 
 // ---- DOM handles --------------------------------------------------------
 const viewMain     = document.getElementById('view-main');

@@ -4,7 +4,7 @@
 
 const BADGE_COLOR = '#382288';
 
-const DEFAULT_RATIO_FALLBACK = 0.5;
+const DEFAULT_RATIO_FALLBACK = 0.6;
 
 async function getDefaultRatio() {
   const { defaultRatio } = await chrome.storage.local.get('defaultRatio');

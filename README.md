@@ -10,26 +10,40 @@ through text.
 
 The leading portion of every word in your selection is wrapped in a
 `<b class="fr-bold">` tag. The number of bolded letters scales with word
-length, with longer words getting more:
+length:
 
-| Word length | Letters bolded |
-|------------:|----------------|
-| 1           | 1              |
-| 2 – 3       | 1              |
-| 4 – 5       | 2              |
-| 6 – 7       | 3              |
-| 8 or more   | `ceil(length × intensity)` |
+- **1–2 letter words**: 1 letter bolded
+- **3+ letter words**: `min(length − 1, ceil(length × intensity))`
 
-`intensity` is configurable from **0.30** to **0.60** (default **0.40**)
-via the slider in the popup. It only affects words of 8+ letters; shorter
-words follow the fixed ladder above.
+The `length − 1` cap guarantees at least one trailing letter stays
+unbolded, so a fixation anchor always exists.
+
+`intensity` is configurable from **0.40** to **0.70** in 0.05 steps via
+the slider in the popup, with a default of **0.60** (roughly 60% of each
+word's letters get bolded). At the default, here's what some common word
+shapes look like:
+
+| Word     | Bolded count | Result          |
+|----------|:------------:|-----------------|
+| `the`    | 2            | **th**e         |
+| `with`   | 3            | **wit**h        |
+| `result` | 4            | **resu**lt      |
+| `reader` | 4            | **read**er      |
+| `extension` | 6         | **extens**ion   |
 
 Punctuation, capitalization, and whitespace are preserved exactly.
+
+The popup exposes two intensity sliders:
+
+- **General intensity** — applies right now on the current tab (per-tab
+  session state).
+- **Default intensity** — the value FixReading opens to on new tabs and
+  fresh sessions (persisted globally).
 
 ## Usage
 
 1. Click the FixReading icon and flip the toggle to **On**. The badge on
-   the icon shows `ON` in amber on the active tab.
+   the icon shows `ON` in purple on the active tab.
 2. Highlight any text on the page. On mouse release, the selection is
    transformed in place.
 3. Click an empty area to undo the most recent transformation (undo
@@ -51,7 +65,7 @@ fixreading/
 ├── content.js             selection handling + DOM transform + undo
 ├── styles.css             injected; styles .fr-bold
 ├── popup.html / popup.css / popup.js
-└── icons/                 16/32/48/128 PNGs (FR wordmark on amber)
+└── icons/                 16/32/48/128 PNGs (chunky "fr" on purple)
 ```
 
 ## Loading in Chrome
