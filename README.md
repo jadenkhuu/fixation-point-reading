@@ -12,6 +12,8 @@ The idea for this project was heavily inspired by some random image I saw on Twi
 
 ## Usage
 
+https://github.com/user-attachments/assets/9532942c-3e93-46e3-9164-5546caf003d5
+
 1. Click the FixReading icon and flip the toggle to **On**. The badge on
    the icon shows `ON` in purple on the active tab.
 2. Highlight any text on the page. On mouse release, the selection is
