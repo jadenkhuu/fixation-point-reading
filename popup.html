@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>FixReading</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+
+  <!-- ============================ MAIN VIEW ============================ -->
+  <main class="view view-main" id="view-main" aria-labelledby="wordmark-label">
+
+    <div class="wordmark-wrap">
+      <span id="wordmark-label" class="visually-hidden">FixReading</span>
+      <div class="wordmark" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 8" fill="currentColor" shape-rendering="crispEdges"><path d="M0 0h5v1h-5zM7 0h1v1h-1zM16 0h4v1h-4zM38 0h1v1h-1zM41 0h1v1h-1zM0 1h1v1h-1zM16 1h1v1h-1zM20 1h1v1h-1zM38 1h1v1h-1zM0 2h1v1h-1zM7 2h1v1h-1zM10 2h1v1h-1zM14 2h1v1h-1zM16 2h1v1h-1zM20 2h1v1h-1zM23 2h3v1h-3zM29 2h3v1h-3zM35 2h4v1h-4zM41 2h1v1h-1zM44 2h4v1h-4zM51 2h3v1h-3zM0 3h3v1h-3zM7 3h1v1h-1zM11 3h1v1h-1zM13 3h1v1h-1zM16 3h4v1h-4zM22 3h1v1h-1zM26 3h1v1h-1zM32 3h1v1h-1zM34 3h1v1h-1zM38 3h1v1h-1zM41 3h1v1h-1zM44 3h1v1h-1zM48 3h1v1h-1zM50 3h1v1h-1zM54 3h1v1h-1zM0 4h1v1h-1zM7 4h1v1h-1zM12 4h1v1h-1zM16 4h1v1h-1zM18 4h1v1h-1zM22 4h5v1h-5zM29 4h4v1h-4zM34 4h1v1h-1zM38 4h1v1h-1zM41 4h1v1h-1zM44 4h1v1h-1zM48 4h1v1h-1zM50 4h1v1h-1zM54 4h1v1h-1zM0 5h1v1h-1zM7 5h1v1h-1zM11 5h1v1h-1zM13 5h1v1h-1zM16 5h1v1h-1zM19 5h1v1h-1zM22 5h1v1h-1zM28 5h1v1h-1zM32 5h1v1h-1zM34 5h1v1h-1zM38 5h1v1h-1zM41 5h1v1h-1zM44 5h1v1h-1zM48 5h1v1h-1zM51 5h3v1h-3zM0 6h1v1h-1zM7 6h1v1h-1zM10 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM20 6h1v1h-1zM23 6h3v1h-3zM29 6h4v1h-4zM35 6h4v1h-4zM41 6h1v1h-1zM44 6h1v1h-1zM48 6h1v1h-1zM54 6h1v1h-1zM50 7h4v1h-4z"/></svg>
+      </div>
+      <p class="tagline">Fixation-point reading</p>
+    </div>
+
+    <div class="actions">
+      <button class="big-toggle" id="big-toggle" type="button" aria-pressed="false">
+        <!-- Pixel-font ON / OFF; CSS swaps which is visible. -->
+        <span class="big-toggle-label big-toggle-off" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 8" fill="currentColor" shape-rendering="crispEdges"><path d="M1 0h3v1h-3zM6 0h5v1h-5zM12 0h5v1h-5zM0 1h1v1h-1zM4 1h1v1h-1zM6 1h1v1h-1zM12 1h1v1h-1zM0 2h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM12 2h1v1h-1zM0 3h1v1h-1zM4 3h1v1h-1zM6 3h3v1h-3zM12 3h3v1h-3zM0 4h1v1h-1zM4 4h1v1h-1zM6 4h1v1h-1zM12 4h1v1h-1zM0 5h1v1h-1zM4 5h1v1h-1zM6 5h1v1h-1zM12 5h1v1h-1zM1 6h3v1h-3zM6 6h1v1h-1zM12 6h1v1h-1z"/></svg>
+        </span>
+        <span class="big-toggle-label big-toggle-on" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 8" fill="currentColor" shape-rendering="crispEdges"><path d="M1 0h3v1h-3zM6 0h1v1h-1zM10 0h1v1h-1zM0 1h1v1h-1zM4 1h1v1h-1zM6 1h2v1h-2zM10 1h1v1h-1zM0 2h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM8 2h1v1h-1zM10 2h1v1h-1zM0 3h1v1h-1zM4 3h1v1h-1zM6 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM0 4h1v1h-1zM4 4h1v1h-1zM6 4h1v1h-1zM9 4h2v1h-2zM0 5h1v1h-1zM4 5h1v1h-1zM6 5h1v1h-1zM10 5h1v1h-1zM1 6h3v1h-3zM6 6h1v1h-1zM10 6h1v1h-1z"/></svg>
+        </span>
+      </button>
+      <button class="ghost" id="revert-all" type="button">
+        Revert all text
+      </button>
+    </div>
+
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+
+    <footer class="corner-actions">
+      <button class="corner-btn corner-info" id="open-info"
+              type="button" aria-label="About FixReading" title="About (coming soon)">
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+          <circle cx="8" cy="8" r="6.4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="7.25" y="6.8" width="1.5" height="4.6" fill="currentColor" rx="0.4"/>
+          <rect x="7.25" y="4.3" width="1.5" height="1.5" fill="currentColor" rx="0.4"/>
+        </svg>
+      </button>
+      <button class="corner-btn corner-settings" id="open-settings"
+              type="button" aria-label="Open settings" title="Settings">
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+          <path fill="currentColor" d="M9.4 1.5l.5 1.9c.4.1.7.3 1 .5l1.8-.7 1.6 2.7-1.4 1.3c.05.3.1.6.1.8s-.05.5-.1.8l1.4 1.3-1.6 2.7-1.8-.7c-.3.2-.6.4-1 .5l-.5 1.9H6.6l-.5-1.9a3.6 3.6 0 0 1-1-.5l-1.8.7-1.6-2.7L3.1 8.8a4 4 0 0 1 0-1.6L1.7 5.9 3.3 3.2l1.8.7c.3-.2.6-.4 1-.5l.5-1.9h2.8zM8 5.4a2.6 2.6 0 1 0 0 5.2 2.6 2.6 0 0 0 0-5.2z"/>
+        </svg>
+      </button>
+    </footer>
+  </main>
+
+  <!-- =========================== SETTINGS VIEW ========================== -->
+  <section class="view view-settings" id="view-settings" hidden
+           aria-labelledby="settings-title">
+    <header class="settings-header">
+      <button class="icon-btn" id="close-settings" type="button" aria-label="Back to main">
+        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+          <path fill="none" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round"
+                d="M10 3 L5 8 L10 13"/>
+        </svg>
+      </button>
+      <h2 id="settings-title">Settings</h2>
+    </header>
+
+    <p class="settings-blurb">
+      Intensity controls how many leading letters get bolded in each word.
+    </p>
+
+    <section class="control">
+      <div class="control-row">
+        <label for="intensity">General intensity</label>
+        <span class="value" id="intensity-val">0.50</span>
+      </div>
+      <input type="range" id="intensity" min="0.3" max="0.6" step="0.05" value="0.5"
+             aria-describedby="intensity-help">
+      <div class="ticks" aria-hidden="true">
+        <span>Light</span>
+        <span>Strong</span>
+      </div>
+      <p class="control-help" id="intensity-help">
+        Applies to selections on this tab right now.
+      </p>
+    </section>
+
+    <section class="control">
+      <div class="control-row">
+        <label for="default-intensity">Default intensity</label>
+        <span class="value" id="default-intensity-val">0.50</span>
+      </div>
+      <input type="range" id="default-intensity" min="0.3" max="0.6" step="0.05" value="0.5"
+             aria-describedby="default-intensity-help">
+      <div class="ticks" aria-hidden="true">
+        <span>Light</span>
+        <span>Strong</span>
+      </div>
+      <p class="control-help" id="default-intensity-help">
+        The value FixReading opens to on new tabs and fresh sessions.
+      </p>
+    </section>
+  </section>
+
+  <script src="popup.js"></script>
+</body>
+</html>

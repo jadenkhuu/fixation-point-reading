@@ -1,0 +1,12 @@
+/* FixReading — injected into pages alongside content.js. */
+/* Users can override these in their own user-stylesheet if they want. */
+
+.fr-bold {
+  font-weight: 700;
+}
+
+/* The wrapping span is structural; we deliberately give it no visual style
+   so links, headings, etc. keep their host page's appearance. */
+.fr-text {
+  font-weight: inherit;
+}
